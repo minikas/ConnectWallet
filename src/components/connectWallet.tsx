@@ -11,7 +11,7 @@ export function ConnectWallet() {
           Select what wallet you want to connect
         </span>
       </header>
-      <div className="flex flex-col gap-2 overflow-auto max-h-[285px]">
+      <div className="flex flex-col gap-2">
         <WalletCard icon="PolkadotJS" active>
           PolkadotJS
         </WalletCard>

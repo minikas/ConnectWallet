@@ -12,14 +12,16 @@ type Account = {
   balance: string;
   name: string;
 };
-export function SelectAccount() {
-  const [accounts, setAccounts] = useState<Account[]>([]);
+export function SelectAccount({ loading }: { loading?: boolean }) {
+  const [accounts, setAccounts] = useState<Account[]>(
+    loading ? [] : fakeAccounts
+  );
 
   useEffect(() => {
-    if (accounts.length) return;
+    if (accounts.length || loading) return;
     const clear = setTimeout(() => setAccounts(fakeAccounts), 5000);
     return () => clearTimeout(clear);
-  }, [accounts]);
+  }, [accounts, loading]);
 
   return (
     <section className="flex flex-col gap-6 hover:bg-muted/30 bg-muted/20 duration-300 transition-colors border rounded-lg py-6 h-fit w-full">
