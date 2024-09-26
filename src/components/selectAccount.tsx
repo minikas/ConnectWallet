@@ -30,7 +30,7 @@ export function SelectAccount({
   }, [accounts, loading]);
 
   return (
-    <section className="flex flex-col gap-6 hover:bg-muted/30 bg-muted/20 duration-300 transition-colors border rounded-lg py-6 h-fit w-full">
+    <section className="flex flex-col gap-6 py-6 h-fit w-full">
       <header className="flex justify-between gap-1 items-center px-6">
         <Button variant="ghost" size="icon" onClick={onBack}>
           <ArrowLeft className="w-4 h-4 scale-150" />
@@ -38,8 +38,7 @@ export function SelectAccount({
         <h3 className="font-bold text-md text-center flex-1">Select Account</h3>
         <div className="w-8" />
       </header>
-
-      <div className="flex flex-col px-3 gap-2 overflow-auto max-h-[285px]">
+      <div className="flex flex-col px-6 gap-2 overflow-auto max-h-[285px]">
         {!!accounts.length
           ? accounts.map((account) => (
               <SelectAccountCard

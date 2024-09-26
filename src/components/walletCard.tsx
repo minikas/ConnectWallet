@@ -24,7 +24,7 @@ export function WalletCard({
   const IconComponent = Icons[icon as keyof typeof Icons];
   return (
     <div
-      role="button"
+      role={active ? "button" : undefined}
       className={cn(
         "flex items-center justify-between gap-2 p-3 rounded-lg",
         active

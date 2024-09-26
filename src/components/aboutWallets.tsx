@@ -7,7 +7,7 @@ import { Wallet } from "./icons";
 
 export function AboutWallets({ onBack }: { onBack: () => void }) {
   return (
-    <section className="flex flex-col gap-6 hover:bg-muted/30 bg-muted/20 duration-300 transition-colors border rounded-lg p-6 h-fit w-full">
+    <section className="flex flex-col gap-6 p-6 h-fit w-full">
       <header className="flex justify-between gap-1 items-center">
         <Button variant="ghost" size="icon" onClick={onBack}>
           <ArrowLeft className="w-4 h-4 scale-150" />
