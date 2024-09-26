@@ -12,7 +12,13 @@ type Account = {
   balance: string;
   name: string;
 };
-export function SelectAccount({ loading }: { loading?: boolean }) {
+export function SelectAccount({
+  loading,
+  onBack,
+}: {
+  loading?: boolean;
+  onBack: () => void;
+}) {
   const [accounts, setAccounts] = useState<Account[]>(
     loading ? [] : fakeAccounts
   );
@@ -26,7 +32,7 @@ export function SelectAccount({ loading }: { loading?: boolean }) {
   return (
     <section className="flex flex-col gap-6 hover:bg-muted/30 bg-muted/20 duration-300 transition-colors border rounded-lg py-6 h-fit w-full">
       <header className="flex justify-between gap-1 items-center px-6">
-        <Button variant="ghost" size="icon">
+        <Button variant="ghost" size="icon" onClick={onBack}>
           <ArrowLeft className="w-4 h-4 scale-150" />
         </Button>
         <h3 className="font-bold text-md text-center flex-1">Select Account</h3>
