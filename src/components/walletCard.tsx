@@ -4,12 +4,13 @@ import { PropsWithChildren } from "react";
 import Link from "next/link";
 import { Url } from "next/dist/shared/lib/router/router";
 
+import { Skeleton as SkeletonComponent } from "./ui/skeleton";
 import * as Icons from "./icons";
 import { Button } from "./ui/button";
 
 import { cn } from "@/lib/utils";
 
-export function WalletCard({
+function WalletCard({
   icon,
   active,
   onClick,
@@ -47,3 +48,15 @@ export function WalletCard({
     </div>
   );
 }
+
+const Skeleton = () => (
+  <div className="flex items-center justify-between gap-2 p-3 rounded-lg bg-muted-foreground/10">
+    <div className="flex items-center gap-3">
+      <SkeletonComponent className="w-7 h-7 rounded-full" />
+      <SkeletonComponent className="h-4 w-24" />
+    </div>
+  </div>
+);
+
+WalletCard.Skeleton = Skeleton;
+export { WalletCard };

@@ -8,9 +8,11 @@ import { WalletCard } from "./walletCard";
 export function ConnectWallet({
   onNext,
   onGetInfo,
+  loading = false,
 }: {
   onNext: () => void;
   onGetInfo: () => void;
+  loading?: boolean;
 }) {
   return (
     <section className="flex flex-col gap-6 p-6 h-fit w-full">
@@ -21,17 +23,21 @@ export function ConnectWallet({
         </span>
       </header>
       <div className="flex flex-col gap-2">
-        {wallets.map((wallet) => (
-          <WalletCard
-            key={wallet.name}
-            icon={wallet.icon}
-            active={wallet.active}
-            onClick={onNext}
-            href={wallet.href}
-          >
-            {wallet.name}
-          </WalletCard>
-        ))}
+        {loading
+          ? new Array(4)
+              .fill(null)
+              .map((_, i) => <WalletCard.Skeleton key={i} />)
+          : wallets.map((wallet) => (
+              <WalletCard
+                key={wallet.name}
+                icon={wallet.icon}
+                active={wallet.active}
+                onClick={onNext}
+                href={wallet.href}
+              >
+                {wallet.name}
+              </WalletCard>
+            ))}
       </div>
       <div className="pt-2 border-t">
         <Button

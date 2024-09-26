@@ -7,6 +7,7 @@ import { ConnectWallet } from "@/components/connectWallet";
 import { AboutWallets } from "@/components/aboutWallets";
 import { SelectAccount } from "@/components/selectAccount";
 import { Multistep } from "@/components/multistep";
+import Marquee from "@/components/ui/marquee";
 
 export default function Home() {
   return (
@@ -28,13 +29,15 @@ export default function Home() {
         <Multistep />
         <ToogleMode />
       </div>
-      <div className="relative w-full flex-1 overflow-hidden border-t p-10">
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-background"></div>
-        <div className="flex gap-10 animate-carousel">
+      <div className="relative w-full flex-1 overflow-hidden border-t py-10">
+        <Marquee pauseOnHover className="[--duration:250s]">
           {[...Array(3)].map((_, index) => (
             <div key={index} className="flex gap-10 flex-shrink-0">
               <div className="flex-shrink-0 w-[360px]">
                 <ConnectWallet onNext={() => {}} onGetInfo={() => {}} />
+              </div>
+              <div className="flex-shrink-0 w-[360px]">
+                <ConnectWallet onNext={() => {}} onGetInfo={() => {}} loading />
               </div>
               <div className="flex-shrink-0 w-[360px]">
                 <SelectAccount onBack={() => {}} />
@@ -45,9 +48,14 @@ export default function Home() {
               <div className="flex-shrink-0 w-[360px]">
                 <AboutWallets onBack={() => {}} />
               </div>
+              <div className="flex-shrink-0 w-[360px]">
+                <AboutWallets onBack={() => {}} initialStep={1} />
+              </div>
             </div>
           ))}
-        </div>
+        </Marquee>
+        <div className="pointer-events-none absolute inset-y-0 left-0 w-1/4 bg-gradient-to-r from-white dark:from-background"></div>
+        <div className="pointer-events-none absolute inset-y-0 right-0 w-1/4 bg-gradient-to-l from-white dark:from-background"></div>
       </div>
     </div>
   );

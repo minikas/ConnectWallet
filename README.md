@@ -1,12 +1,13 @@
-# Connect Wallet - Substrate Wallet Integration
+# Connect Wallet - Substrate Wallet Integration Demo
 
-This project is a Next.js application that features a "Connect Wallet" component, allowing users to connect their Substrate-based wallets such as Polkadot.js, Talisman, and others. It provides a seamless integration for blockchain interactions within a modern web application.
+This project is a Next.js application that demonstrates a "Connect Wallet" component UI for Substrate-based wallets such as Polkadot.js and Talisman. While the current implementation uses mock data, it provides a foundation for integrating real wallet connections.
 
 ## Technologies Used
 
 - [Next.js](https://nextjs.org/) - React framework for building web applications
 - [Tailwind CSS](https://tailwindcss.com/) - Utility-first CSS framework
 - [Shadcn/ui](https://ui.shadcn.com/) - Re-usable components built with Radix UI and Tailwind CSS
+- [Magic UI](https://magicui.design) - Beautiful UI components (Marquee component used)
 - [Framer Motion](https://www.framer.com/motion/) - Animation library for React
 - [ESLint](https://eslint.org/) - Linting utility for JavaScript and TypeScript
 - [Prettier](https://prettier.io/) - Code formatter
@@ -14,7 +15,7 @@ This project is a Next.js application that features a "Connect Wallet" component
 
 ## Features
 
-- Connect to Substrate-based wallets (e.g., Polkadot.js, Talisman)
+- Mock interface for connecting to Substrate-based wallets
 - Responsive and animated UI components
 - Dark mode support
 
@@ -40,7 +41,7 @@ To learn more about the technologies used in this project, check out the followi
 - [Tailwind CSS Documentation](https://tailwindcss.com/docs) - explore Tailwind CSS utilities.
 - [shadcn/ui Documentation](https://ui.shadcn.com/) - learn about the re-usable components.
 - [Framer Motion Documentation](https://www.framer.com/motion/) - discover animation possibilities.
-- [Polkadot.js Documentation](https://polkadot.js.org/docs/) - learn about Substrate wallet integration.
+- [Magic UI Documentation](https://magicui.design/docs) - UI library for Design Engineers
 
 ## Contributing
 

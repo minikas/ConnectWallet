@@ -16,8 +16,14 @@ import { Blockchain, Wallet } from "./icons";
 
 import { cn } from "@/lib/utils";
 
-export function AboutWallets({ onBack }: { onBack: () => void }) {
-  const [currentStep, setCurrentStep] = useState(0);
+export function AboutWallets({
+  onBack,
+  initialStep = 0,
+}: {
+  onBack: () => void;
+  initialStep?: number;
+}) {
+  const [currentStep, setCurrentStep] = useState(initialStep);
   const [direction, setDirection] = useState(0);
 
   const [ref, bounds] = useMeasure();
@@ -119,7 +125,7 @@ const Action = ({
   onClick: () => void;
 }) => (
   <Button
-    className="bg-transparent hover:bg-transparent px-1 py-2 group"
+    className="bg-transparent hover:bg-transparent px-1 py-2 group shadow-none"
     onClick={onClick}
   >
     <div
