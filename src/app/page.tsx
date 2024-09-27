@@ -29,7 +29,10 @@ export default function Home() {
         <Multistep />
         <ToogleMode />
       </div>
-      <div className="relative w-full flex-1 overflow-hidden border-t py-10">
+      <div className="relative w-full flex-1 border-t py-10">
+        <div className="absolute z-20 -top-3 left-10 px-2 py-1 bg-muted-foreground/30 rounded-sm">
+          <p className="text-xs font-mono">Interactions</p>
+        </div>
         <Marquee pauseOnHover className="[--duration:250s]">
           {[...Array(3)].map((_, index) => (
             <div key={index} className="flex gap-10 flex-shrink-0">
