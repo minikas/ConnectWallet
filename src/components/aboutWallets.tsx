@@ -13,16 +13,11 @@ import useMeasure from "react-use-measure";
 
 import { Button } from "./ui/button";
 import { Blockchain, Wallet } from "./icons";
+import { useMultistep } from "./ui/multistep";
 
 import { cn } from "@/lib/utils";
 
-export function AboutWallets({
-  onBack,
-  initialStep = 0,
-}: {
-  onBack: () => void;
-  initialStep?: number;
-}) {
+export function AboutWallets({ initialStep = 0 }: { initialStep?: number }) {
   const [currentStep, setCurrentStep] = useState(initialStep);
   const [direction, setDirection] = useState(0);
 
@@ -56,10 +51,16 @@ export function AboutWallets({
     }
   };
 
+  const { setView } = useMultistep();
+
   return (
     <section className="flex flex-col gap-6 p-6 h-fit w-full overflow-hidden">
       <header className="flex justify-between gap-1 items-center">
-        <Button variant="ghost" size="icon" onClick={onBack}>
+        <Button
+          variant="ghost"
+          size="icon"
+          onClick={() => setView("connectWallet")}
+        >
           <ArrowLeft className="w-4 h-4 scale-150" />
         </Button>
         <h3 className="font-bold text-md text-center flex-1">About Wallets</h3>

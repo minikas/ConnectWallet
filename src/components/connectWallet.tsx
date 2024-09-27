@@ -4,16 +4,10 @@ import { ChevronRight } from "lucide-react";
 
 import { Button } from "./ui/button";
 import { WalletCard } from "./walletCard";
+import { useMultistep } from "./ui/multistep";
 
-export function ConnectWallet({
-  onNext,
-  onGetInfo,
-  loading = false,
-}: {
-  onNext: () => void;
-  onGetInfo: () => void;
-  loading?: boolean;
-}) {
+export function ConnectWallet({ loading = false }: { loading?: boolean }) {
+  const { setView } = useMultistep();
   return (
     <section className="flex flex-col gap-6 p-6 h-fit w-full">
       <header className="flex flex-col gap-1 items-center">
@@ -32,7 +26,7 @@ export function ConnectWallet({
                 key={wallet.name}
                 icon={wallet.icon}
                 active={wallet.active}
-                onClick={onNext}
+                onClick={() => setView("selectAccounts")}
                 href={wallet.href}
               >
                 {wallet.name}
@@ -41,7 +35,7 @@ export function ConnectWallet({
       </div>
       <div className="pt-2 border-t">
         <Button
-          onClick={onGetInfo}
+          onClick={() => setView("aboutWallets")}
           variant="link"
           className="flex items-center justify-between gap-2 text-muted-foreground/60 w-full"
         >

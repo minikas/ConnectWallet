@@ -6,8 +6,8 @@ import { ToogleMode } from "@/components/toogleMode";
 import { ConnectWallet } from "@/components/connectWallet";
 import { AboutWallets } from "@/components/aboutWallets";
 import { SelectAccount } from "@/components/selectAccount";
-import { Multistep } from "@/components/multistep";
 import Marquee from "@/components/ui/marquee";
+import { Multistep } from "@/components/ui/multistep";
 
 export default function Home() {
   return (
@@ -26,8 +26,20 @@ export default function Home() {
             </Link>
           </p>
         </div>
-        <Multistep />
         <ToogleMode />
+        <div className="flex flex-col w-full gap-5">
+          <Multistep initialView="connectWallet">
+            <Multistep.Step name="connectWallet">
+              <ConnectWallet />
+            </Multistep.Step>
+            <Multistep.Step name="selectAccounts">
+              <SelectAccount />
+            </Multistep.Step>
+            <Multistep.Step name="aboutWallets">
+              <AboutWallets />
+            </Multistep.Step>
+          </Multistep>
+        </div>
       </div>
       <div className="relative w-full flex-1 border-t py-10">
         <div className="absolute z-20 -top-3 left-10 px-2 py-1 bg-muted-foreground/30 rounded-sm">
@@ -37,22 +49,22 @@ export default function Home() {
           {[...Array(3)].map((_, index) => (
             <div key={index} className="flex gap-10 flex-shrink-0">
               <div className="flex-shrink-0 w-[360px]">
-                <ConnectWallet onNext={() => {}} onGetInfo={() => {}} />
+                <ConnectWallet />
               </div>
               <div className="flex-shrink-0 w-[360px]">
-                <ConnectWallet onNext={() => {}} onGetInfo={() => {}} loading />
+                <ConnectWallet loading />
               </div>
               <div className="flex-shrink-0 w-[360px]">
-                <SelectAccount onBack={() => {}} />
+                <SelectAccount />
               </div>
               <div className="flex-shrink-0 w-[360px]">
-                <SelectAccount loading onBack={() => {}} />
+                <SelectAccount loading />
               </div>
               <div className="flex-shrink-0 w-[360px]">
-                <AboutWallets onBack={() => {}} />
+                <AboutWallets />
               </div>
               <div className="flex-shrink-0 w-[360px]">
-                <AboutWallets onBack={() => {}} initialStep={1} />
+                <AboutWallets initialStep={1} />
               </div>
             </div>
           ))}

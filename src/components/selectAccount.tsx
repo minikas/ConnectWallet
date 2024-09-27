@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 
 import { Button } from "./ui/button";
 import { SelectAccountCard } from "./selectAccountCard";
+import { useMultistep } from "./ui/multistep";
 
 type Account = {
   address: string;
@@ -12,13 +13,7 @@ type Account = {
   balance: string;
   name: string;
 };
-export function SelectAccount({
-  loading,
-  onBack,
-}: {
-  loading?: boolean;
-  onBack: () => void;
-}) {
+export function SelectAccount({ loading }: { loading?: boolean }) {
   const [accounts, setAccounts] = useState<Account[]>(
     loading ? [] : fakeAccounts
   );
@@ -29,10 +24,15 @@ export function SelectAccount({
     return () => clearTimeout(clear);
   }, [accounts, loading]);
 
+  const { setView } = useMultistep();
   return (
     <section className="flex flex-col gap-6 py-6 h-fit w-full">
       <header className="flex justify-between gap-1 items-center px-6">
-        <Button variant="ghost" size="icon" onClick={onBack}>
+        <Button
+          variant="ghost"
+          size="icon"
+          onClick={() => setView("connectWallet")}
+        >
           <ArrowLeft className="w-4 h-4 scale-150" />
         </Button>
         <h3 className="font-bold text-md text-center flex-1">Select Account</h3>
