@@ -1,6 +1,8 @@
-# Connect Wallet - Substrate Wallet Integration Demo
+# Connect Wallet Demo
 
 This project is a Next.js application that demonstrates a "Connect Wallet" component UI for Substrate-based wallets such as Polkadot.js and Talisman. While the current implementation uses mock data, it provides a foundation for integrating real wallet connections.
+
+![Connect Wallet Demo Screenshot](public/screenshot.png)
 
 ## Technologies Used
 
@@ -30,8 +32,6 @@ yarn dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `src/app/page.tsx`. The page auto-updates as you edit the file.
 
 ## Learn More
 
