@@ -104,11 +104,7 @@ export function AboutWallets({ initialStep = 0 }: { initialStep?: number }) {
         <Action
           active={currentStep === 1}
           onClick={() => {
-            if (currentStep === 2) {
-              setCurrentStep(0);
-              setDirection(-1);
-              return;
-            }
+            if (currentStep === 1) return;
             setDirection(1);
             setCurrentStep((prev) => prev + 1);
           }}
