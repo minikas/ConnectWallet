@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import useMeasure from "react-use-measure";
 import { AnimatePresence, motion } from "framer-motion";
 
@@ -9,6 +9,10 @@ import { AboutWallets } from "./aboutWallets";
 import { SelectAccount } from "./selectAccount";
 
 export const Multistep = () => {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => setMounted(true), []);
+
   const [view, setView] = useState("default");
   const [elementRef, bounds] = useMeasure();
   const previousHeightRef = useRef(0);
@@ -58,7 +62,7 @@ export const Multistep = () => {
     <motion.div
       className="w-full hover:bg-muted/30 bg-muted/20 duration-300 transition-colors border rounded-lg h-fit"
       animate={{
-        height: bounds.height,
+        height: mounted ? "auto" : bounds.height,
         transition: {
           duration: 0.27,
           ease: [0.25, 1, 0.5, 1],
