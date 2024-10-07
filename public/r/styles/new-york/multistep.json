@@ -1,0 +1,16 @@
+{
+  "name": "multistep",
+  "type": "registry:ui",
+  "dependencies": [
+    "react-use-measure",
+    "framer-motion"
+  ],
+  "files": [
+    {
+      "path": "ui/multistep.tsx",
+      "content": "\"use client\";\n\nimport {\n  Dispatch,\n  PropsWithChildren,\n  SetStateAction,\n  useContext,\n  useMemo,\n  useRef,\n  useState,\n  createContext,\n  Fragment,\n  Children,\n  isValidElement,\n} from \"react\";\nimport useMeasure from \"react-use-measure\";\nimport { AnimatePresence, motion } from \"framer-motion\";\n\nconst Multistep = ({\n  initialView,\n  children,\n}: PropsWithChildren<{ initialView: string }>) => {\n  const [view, setView] = useState(initialView);\n  const [elementRef, bounds] = useMeasure();\n  const previousHeightRef = useRef(0);\n\n  const opacityDuration = useMemo(() => {\n    const MIN_DURATION = 0.15;\n    const MAX_DURATION = 0.27;\n\n    if (!previousHeightRef.current) {\n      previousHeightRef.current = bounds.height;\n      return MIN_DURATION;\n    }\n\n    const heightDifference = Math.abs(\n      bounds.height - previousHeightRef.current\n    );\n    previousHeightRef.current = bounds.height;\n\n    const duration = Math.min(\n      Math.max(heightDifference / 500, MIN_DURATION),\n      MAX_DURATION\n    );\n\n    return duration;\n  }, [bounds.height]);\n\n  const content = useMemo(\n    () =>\n      Children.toArray(children).find(\n        (child) => isValidElement(child) && child.props.name === view\n      ),\n    [children, view]\n  );\n\n  return (\n    <Context.Provider value={{ view, setView }}>\n      <motion.div\n        className=\"w-full hover:bg-muted/30 bg-muted/20 duration-300 transition-colors border rounded-lg h-fit\"\n        animate={{\n          height: bounds.height,\n          transition: {\n            duration: 0.27,\n            ease: [0.25, 1, 0.5, 1],\n          },\n        }}\n      >\n        <div ref={elementRef}>\n          <AnimatePresence initial={false} mode=\"popLayout\" custom={view}>\n            <motion.div\n              initial={{ opacity: 0, scale: 0.96 }}\n              animate={{ opacity: 1, scale: 1, y: 0 }}\n              exit={{ opacity: 0, scale: 0.96 }}\n              key={view}\n              transition={{\n                duration: opacityDuration,\n                ease: [0.26, 0.08, 0.25, 1],\n              }}\n            >\n              {content}\n            </motion.div>\n          </AnimatePresence>\n        </div>\n      </motion.div>\n    </Context.Provider>\n  );\n};\n\nconst Step = ({ children }: PropsWithChildren<{ name: string }>) => {\n  return <Fragment>{children}</Fragment>;\n};\n\ntype State = {\n  view: string;\n  setView: Dispatch<SetStateAction<string>>;\n};\n\nconst Context = createContext<State>({\n  view: \"\",\n  setView: () => {},\n});\n\nexport const useMultistep = () => {\n  const state = useContext(Context);\n  if (!state) {\n    throw new Error(\"useMultistep must be used within a Multistep component\");\n  }\n  return state;\n};\n\nMultistep.Step = Step;\nexport { Multistep };\n",
+      "type": "registry:ui",
+      "target": ""
+    }
+  ]
+}

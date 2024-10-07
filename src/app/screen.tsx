@@ -3,11 +3,11 @@
 import Link from "next/link";
 
 import { ToogleMode } from "@/components/toogleMode";
-import { ConnectWallet } from "@/components/connectWallet";
-import { AboutWallets } from "@/components/aboutWallets";
-import { SelectAccount } from "@/components/selectAccount";
+import { AboutWallets } from "@/components/connectWallet/aboutWallets";
+import { SelectAccount } from "@/components/connectWallet/selectAccount";
 import Marquee from "@/components/ui/marquee";
-import { Multistep } from "@/components/ui/multistep";
+import { ConnectWallet } from "@/components/connectWallet/connectWallet";
+import { SelectWallet } from "@/components/connectWallet/selectWallet";
 
 export default function Screen() {
   return (
@@ -28,17 +28,7 @@ export default function Screen() {
         </div>
         <ToogleMode />
         <div className="flex flex-col w-full gap-5">
-          <Multistep initialView="connectWallet">
-            <Multistep.Step name="connectWallet">
-              <ConnectWallet />
-            </Multistep.Step>
-            <Multistep.Step name="selectAccounts">
-              <SelectAccount />
-            </Multistep.Step>
-            <Multistep.Step name="aboutWallets">
-              <AboutWallets />
-            </Multistep.Step>
-          </Multistep>
+          <ConnectWallet />
         </div>
       </div>
       <div className="relative w-full flex-1 border-t py-10">
@@ -49,10 +39,10 @@ export default function Screen() {
           {[...Array(3)].map((_, index) => (
             <div key={index} className="flex gap-10 flex-shrink-0">
               <div className="flex-shrink-0 w-[360px]">
-                <ConnectWallet />
+                <SelectWallet />
               </div>
               <div className="flex-shrink-0 w-[360px]">
-                <ConnectWallet loading />
+                <SelectWallet loading />
               </div>
               <div className="flex-shrink-0 w-[360px]">
                 <SelectAccount />
