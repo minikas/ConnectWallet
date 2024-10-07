@@ -6,7 +6,7 @@ import { ToogleMode } from "@/components/toogleMode";
 import { AboutWallets } from "@/components/connectWallet/aboutWallets";
 import { SelectAccount } from "@/components/connectWallet/selectAccount";
 import Marquee from "@/components/ui/marquee";
-import { ConnectWallet } from "@/components/connectWallet/connectWallet";
+import { ConnectWallet } from "@/components/connectWallet";
 import { SelectWallet } from "@/components/connectWallet/selectWallet";
 
 export default function Screen() {
