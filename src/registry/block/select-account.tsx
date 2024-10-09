@@ -1,6 +1,5 @@
 "use client";
 
-import { ArrowLeft } from "lucide-react";
 import {
   PropsWithChildren,
   useMemo,
@@ -8,12 +7,11 @@ import {
   useEffect,
   useState,
 } from "react";
-import { Copy as CopyIcon } from "lucide-react";
-
-import { Copy } from "../ui/copy";
+import { Copy as CopyIcon, ArrowLeft } from "lucide-react";
 
 import { Icons } from "./connect-icons";
 
+import { Copy } from "@/components/ui/copy";
 import { Skeleton as SkeletonComponent } from "@/components/ui/skeleton";
 import { Button } from "@/components/ui/button";
 
