@@ -62,7 +62,7 @@ const Multistep = ({
       <motion.div
         className="w-full hover:bg-muted/30 bg-muted/20 duration-300 transition-colors border rounded-lg h-fit"
         animate={{
-          height: bounds.height,
+          height: !!bounds.height ? bounds.height : "auto",
           transition: {
             duration: 0.27,
             ease: [0.25, 1, 0.5, 1],
