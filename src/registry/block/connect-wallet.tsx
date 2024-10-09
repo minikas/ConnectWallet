@@ -1,4 +1,4 @@
-import { Multistep, useMultistep } from "../../ui/multistep";
+import { Multistep, useMultistep } from "../ui/multistep";
 
 import { AboutWallets } from "./about-wallets";
 import { SelectAccount } from "./select-account";

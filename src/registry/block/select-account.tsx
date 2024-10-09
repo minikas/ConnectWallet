@@ -10,7 +10,7 @@ import {
 } from "react";
 import { Copy as CopyIcon } from "lucide-react";
 
-import { Copy } from "../../ui/copy";
+import { Copy } from "../ui/copy";
 
 import { Icons } from "./connect-icons";
 
