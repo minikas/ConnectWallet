@@ -1,0 +1,7 @@
+{
+  "name": "about-wallets",
+  "type": "registry:block",
+  "registryDependencies": ["button"],
+  "dependencies": ["react-use-measure", "framer-motion", "lucide-react"],
+  "files": ["about-wallets.tsx"]
+}

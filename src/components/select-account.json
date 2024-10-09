@@ -1,0 +1,7 @@
+{
+  "name": "select-account",
+  "type": "registry:block",
+  "registryDependencies": ["button", "copy", "skeleton", "connect-icons"],
+  "dependencies": ["react-use-measure", "framer-motion", "lucide-react"],
+  "files": ["select-account.tsx"]
+}

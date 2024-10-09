@@ -12,6 +12,7 @@ import {
   Fragment,
   Children,
   isValidElement,
+  ReactNode,
 } from "react";
 import useMeasure from "react-use-measure";
 import { AnimatePresence, motion } from "framer-motion";
@@ -46,13 +47,15 @@ const Multistep = ({
     return duration;
   }, [bounds.height]);
 
-  const content = useMemo(
-    () =>
-      Children.toArray(children).find(
-        (child) => isValidElement(child) && child.props.name === view
-      ),
-    [children, view]
-  );
+  const content = useMemo(() => {
+    const childArray = Children.toArray(children);
+    return childArray.find((child) => {
+      if (!isValidElement(child)) return;
+
+      const childKey = child?.key?.replace(/^\.\$/, "");
+      return childKey === view;
+    });
+  }, [children, view]);
 
   return (
     <Context.Provider value={{ view, setView }}>
@@ -87,7 +90,7 @@ const Multistep = ({
   );
 };
 
-const Step = ({ children }: PropsWithChildren<{ name: string }>) => {
+const Step = ({ children }: { children: ReactNode }) => {
   return <Fragment>{children}</Fragment>;
 };
 

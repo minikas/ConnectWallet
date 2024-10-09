@@ -3,11 +3,11 @@
 import Link from "next/link";
 
 import { ToogleMode } from "@/components/toogleMode";
-import { AboutWallets } from "@/components/connectWallet/aboutWallets";
-import { SelectAccount } from "@/components/connectWallet/selectAccount";
+import { AboutWallets } from "@/components/about-wallets";
+import { SelectAccount } from "@/components/select-account";
 import Marquee from "@/components/ui/marquee";
-import { ConnectWallet } from "@/components/connectWallet";
-import { SelectWallet } from "@/components/connectWallet/selectWallet";
+import { ConnectWallet } from "@/components/connect-wallet";
+import { SelectWallet } from "@/components/select-wallet";
 
 export default function Screen() {
   return (
@@ -39,22 +39,29 @@ export default function Screen() {
           {[...Array(3)].map((_, index) => (
             <div key={index} className="flex gap-10 flex-shrink-0">
               <div className="flex-shrink-0 w-[360px]">
-                <SelectWallet />
+                <SelectWallet
+                  onReadMore={() => {}}
+                  onSelectAccount={() => {}}
+                />
               </div>
               <div className="flex-shrink-0 w-[360px]">
-                <SelectWallet loading />
+                <SelectWallet
+                  loading
+                  onReadMore={() => {}}
+                  onSelectAccount={() => {}}
+                />
               </div>
               <div className="flex-shrink-0 w-[360px]">
-                <SelectAccount />
+                <SelectAccount onBack={() => {}} />
               </div>
               <div className="flex-shrink-0 w-[360px]">
-                <SelectAccount loading />
+                <SelectAccount loading onBack={() => {}} />
               </div>
               <div className="flex-shrink-0 w-[360px]">
-                <AboutWallets />
+                <AboutWallets onBack={() => {}} />
               </div>
               <div className="flex-shrink-0 w-[360px]">
-                <AboutWallets initialStep={1} />
+                <AboutWallets initialStep={1} onBack={() => {}} />
               </div>
             </div>
           ))}

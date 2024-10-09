@@ -1,0 +1,12 @@
+{
+  "name": "connect-wallet",
+  "description": "Connect wallet block",
+  "type": "registry:block",
+  "registryDependencies": [
+    "about-wallets",
+    "connect-icons",
+    "select-wallet",
+    "select-account"
+  ],
+  "files": ["connect-wallet.tsx"]
+}

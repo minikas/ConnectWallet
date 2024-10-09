@@ -1,0 +1,7 @@
+{
+  "name": "select-wallet",
+  "type": "registry:block",
+  "registryDependencies": ["button", "skeleton", "connect-icons"],
+  "dependencies": ["lucide-react"],
+  "files": ["select-wallet.tsx"]
+}
