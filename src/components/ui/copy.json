@@ -1,6 +1,0 @@
-{
-  "name": "copy",
-  "type": "registry:ui",
-  "registryDependencies": ["tooltip"],
-  "files": ["copy.tsx"]
-}

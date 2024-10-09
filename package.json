@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint --fix",
-    "build:registry": "npx tsx ./src/scripts/build-registry.mts && yarn lint"
+    "build:registry": "npx tsx ./src/scripts/build-registry.ts && yarn lint"
   },
   "dependencies": {
     "@radix-ui/react-dropdown-menu": "^2.1.1",

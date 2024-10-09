@@ -1,0 +1,19 @@
+{
+  "name": "connect-wallet",
+  "description": "Connect wallet block",
+  "type": "registry:block",
+  "registryDependencies": [
+    "about-wallets",
+    "connect-icons",
+    "select-wallet",
+    "select-account"
+  ],
+  "files": [
+    {
+      "type": "registry:block",
+      "content": "import { Multistep, useMultistep } from \"../../ui/multistep\";\n\nimport { AboutWallets } from \"./about-wallets\";\nimport { SelectAccount } from \"./select-account\";\nimport { SelectWallet } from \"./select-wallet\";\n\nexport const ConnectWallet = () => {\n  return (\n    <Multistep initialView=\"connectWallet\">\n      <SelectWalletComponent key=\"connectWallet\" />\n      <SelectAccountComponent key=\"selectAccounts\" />\n      <AboutWalletsComponent key=\"aboutWallets\" />\n    </Multistep>\n  );\n};\n\nconst SelectWalletComponent = () => {\n  const { setView } = useMultistep();\n\n  return (\n    <Multistep.Step>\n      <SelectWallet\n        onSelectAccount={() => setView(\"selectAccounts\")}\n        onReadMore={() => setView(\"aboutWallets\")}\n      />\n    </Multistep.Step>\n  );\n};\n\nconst SelectAccountComponent = () => {\n  const { setView } = useMultistep();\n\n  return (\n    <Multistep.Step>\n      <SelectAccount onBack={() => setView(\"connectWallet\")} />\n    </Multistep.Step>\n  );\n};\n\nconst AboutWalletsComponent = () => {\n  const { setView } = useMultistep();\n\n  return (\n    <Multistep.Step>\n      <AboutWallets onBack={() => setView(\"connectWallet\")} />\n    </Multistep.Step>\n  );\n};\n",
+      "path": "block/connect-wallet.tsx",
+      "target": "components/block/connect-wallet.tsx"
+    }
+  ]
+}

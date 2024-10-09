@@ -1,6 +1,0 @@
-{
-  "name": "multistep",
-  "type": "registry:ui",
-  "dependencies": ["react-use-measure", "framer-motion"],
-  "files": ["multistep.tsx"]
-}

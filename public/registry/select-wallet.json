@@ -1,0 +1,20 @@
+{
+  "name": "select-wallet",
+  "type": "registry:block",
+  "registryDependencies": [
+    "button",
+    "skeleton",
+    "connect-icons"
+  ],
+  "dependencies": [
+    "lucide-react"
+  ],
+  "files": [
+    {
+      "type": "registry:block",
+      "content": "\"use client\";\n\nimport { ChevronRight } from \"lucide-react\";\nimport { PropsWithChildren } from \"react\";\n\nimport { Icons } from \"./connect-icons\";\n\nimport { Skeleton as SkeletonComponent } from \"@/components/ui/skeleton\";\nimport { Button } from \"@/components/ui/button\";\nimport { cn } from \"@/lib/utils\";\n\nexport function SelectWallet({\n  loading = false,\n  onSelectAccount,\n  onReadMore,\n}: {\n  loading?: boolean;\n  onSelectAccount: () => void;\n  onReadMore: () => void;\n}) {\n  return (\n    <section className=\"flex flex-col gap-6 p-6 h-fit w-full\">\n      <header className=\"flex flex-col gap-1 items-center\">\n        <h3 className=\"font-bold text-xl\">Connect Wallet</h3>\n        <span className=\"text-sm text-muted-foreground\">\n          Select what wallet you want to connect\n        </span>\n      </header>\n      <div className=\"flex flex-col gap-2\">\n        {loading\n          ? new Array(4).fill(null).map((_, i) => <Skeleton key={i} />)\n          : wallets.map((wallet) => (\n              <WalletCard\n                key={wallet.name}\n                icon={wallet.icon}\n                active={wallet.active}\n                onClick={onSelectAccount}\n                href={wallet.href}\n              >\n                {wallet.name}\n              </WalletCard>\n            ))}\n      </div>\n      <div className=\"pt-2 border-t\">\n        <Button\n          onClick={onReadMore}\n          variant=\"link\"\n          className=\"flex items-center justify-between gap-2 text-muted-foreground/60 w-full\"\n        >\n          <span>Read more about wallets</span>\n          <ChevronRight className=\"w-4 h-4\" />\n        </Button>\n      </div>\n    </section>\n  );\n}\n\nfunction WalletCard({\n  icon,\n  active,\n  onClick,\n  href,\n  children,\n}: PropsWithChildren<{\n  icon: string;\n  active?: boolean;\n  onClick?: () => void;\n  href: string;\n}>) {\n  const IconComponent = Icons[icon as keyof typeof Icons];\n  return (\n    <div\n      role={active ? \"button\" : undefined}\n      className={cn(\n        \"flex items-center justify-between gap-2 p-3 rounded-lg\",\n        active\n          ? \"bg-muted-foreground/10 hover:bg-muted-foreground/15 hover:scale-105 transition-all duration-200 cursor-pointer\"\n          : \"opacity-50\"\n      )}\n      onClick={active ? onClick : undefined}\n    >\n      <div className=\"flex items-center gap-3\">\n        <IconComponent className=\"w-7 h-7 scale-110\" />\n        <span className=\"text-sm font-bold\">{children}</span>\n      </div>\n      {!active && (\n        <Button size=\"sm\" variant=\"ghost\" asChild>\n          <a href={href} target=\"_blank\">\n            Setup\n          </a>\n        </Button>\n      )}\n    </div>\n  );\n}\n\nconst Skeleton = () => (\n  <div className=\"flex items-center justify-between gap-2 p-3 rounded-lg bg-muted-foreground/10\">\n    <div className=\"flex items-center gap-3\">\n      <SkeletonComponent className=\"w-7 h-7 rounded-full\" />\n      <SkeletonComponent className=\"h-4 w-24\" />\n    </div>\n  </div>\n);\n\nconst wallets = [\n  {\n    name: \"PolkadotJS\",\n    href: \"https://polkadot.js.org/extension/\",\n    icon: \"PolkadotJS\",\n    active: true,\n  },\n  {\n    name: \"Talisman\",\n    href: \"https://www.talisman.xyz/\",\n    icon: \"Talisman\",\n    active: true,\n  },\n  {\n    name: \"SubWallet\",\n    href: \"https://www.subwallet.app/\",\n    icon: \"SubWallet\",\n    active: false,\n  },\n  {\n    name: \"Enkrypt\",\n    href: \"https://www.enkrypt.com/\",\n    icon: \"Enkrypt\",\n    active: false,\n  },\n];\n",
+      "path": "block/select-wallet.tsx",
+      "target": "components/block/select-wallet.tsx"
+    }
+  ]
+}

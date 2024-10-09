@@ -1,0 +1,15 @@
+{
+  "name": "copy",
+  "type": "registry:ui",
+  "registryDependencies": [
+    "tooltip"
+  ],
+  "files": [
+    {
+      "type": "registry:ui",
+      "content": "\"use client\";\n\nimport { ComponentProps, MouseEvent, PropsWithChildren, useState } from \"react\";\n\nimport {\n  Tooltip,\n  TooltipContent,\n  TooltipProvider,\n  TooltipTrigger,\n} from \"@/components/ui/tooltip\";\n\nexport const Copy = ({\n  value,\n  side = \"left\",\n  children,\n}: PropsWithChildren<{\n  value: string | number;\n  side?: ComponentProps<typeof TooltipContent>[\"side\"];\n}>) => {\n  const [open, setOpen] = useState(false);\n  const [state, setState] = useState(false);\n\n  const onCopy = async (e: MouseEvent<HTMLButtonElement>) => {\n    e.preventDefault();\n    e.stopPropagation();\n    if (!value) return;\n    try {\n      await navigator.clipboard.writeText(value.toString());\n      if (!state) setState(true);\n    } catch (error) {\n      console.error(\"Error copying to clipboard:\", error);\n    }\n  };\n\n  const onMouseOut = () => state && setState(false);\n\n  return (\n    <TooltipProvider delayDuration={150}>\n      <Tooltip onOpenChange={setOpen} open={open}>\n        <TooltipTrigger asChild onClick={onCopy} onMouseOut={onMouseOut}>\n          {children}\n        </TooltipTrigger>\n        <TooltipContent\n          side={side}\n          onPointerDownOutside={(e) => e.preventDefault()}\n        >\n          {state ? \"Copied\" : \"Copy\"}\n        </TooltipContent>\n      </Tooltip>\n    </TooltipProvider>\n  );\n};\n",
+      "path": "ui/copy.tsx",
+      "target": "components/ui/copy.tsx"
+    }
+  ]
+}
