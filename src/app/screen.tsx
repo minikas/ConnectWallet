@@ -56,8 +56,8 @@ export default function Screen() {
               className="flex flex-col gap-4 py-3 w-full"
             >
               <Install>
-                npx shadcn-ui@latest add
-                https://minikas.github.io/ConnectWallet/connect-wallet.json
+                npx shadcn@latest add
+                https://minikas.github.io/ConnectWallet/registry/connect-wallet.json
               </Install>
             </TabsContent>
           </Tabs>
