@@ -5,13 +5,20 @@ const blocks: Registry = [
     description: "Connect wallet block",
     type: "registry:block",
     registryDependencies: ["skeleton", "button"],
-    dependencies: ["react-use-measure", "framer-motion", "lucide-react"],
+    dependencies: [
+      "react-use-measure",
+      "framer-motion",
+      "lucide-react",
+      "tooltip",
+    ],
     files: [
       "block/connect-wallet.tsx",
       "block/select-account.tsx",
       "block/select-wallet.tsx",
       "block/connect-icons.tsx",
       "block/about-wallets.tsx",
+      "ui/multistep.tsx",
+      "ui/copy.tsx",
     ],
   },
 ];
