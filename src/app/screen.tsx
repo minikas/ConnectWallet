@@ -33,11 +33,11 @@ export default function Screen() {
         </div>
         <ToogleMode />
         <div className="flex gap-4 w-full max-w-sm">
-          <Tabs defaultValue="install" className="w-full">
+          <Tabs defaultValue="preview" className="w-full">
             <TabsList className="grid w-full grid-cols-2 bg-muted-foreground/5 border border-muted">
               <TabsTrigger
                 className="data-[state=active]:bg-muted-foreground/20"
-                value="code"
+                value="preview"
               >
                 Preview
               </TabsTrigger>
@@ -48,7 +48,7 @@ export default function Screen() {
                 Install
               </TabsTrigger>
             </TabsList>
-            <TabsContent value="code" className="w-full ">
+            <TabsContent value="preview" className="w-full ">
               <ConnectWallet />
             </TabsContent>
             <TabsContent
