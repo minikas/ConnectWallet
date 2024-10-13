@@ -2,6 +2,8 @@
   "name": "connect-wallet",
   "version": "0.1.0",
   "private": true,
+  "author": "Kas Ferreira <kas_pintxuki@outlook.com> (https://github.com/minikas)",
+  "description": "A Connect Wallet component UI",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
